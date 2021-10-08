@@ -28,6 +28,7 @@
                         </thead>
                         <tbody>
                             @foreach($movies as $movie) 
+                            @if($movie->state === 1)
                             <tr>
                                 <th scope="row">{{ $movie->id }}</th>
                                 <td>{{ $movie->title }}</td>
@@ -37,6 +38,7 @@
                                 <td>{{ $movie->updated_at }}</td>
                                 <td><a href="{{ route('rent.movie', ['movie_id' => $movie->id, 'client_id' => 1]) }}">Alquilar</td>
                             </tr>
+                            @endif
                             @endforeach
                         </tbody>
                     </table>

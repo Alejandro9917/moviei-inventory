@@ -33,7 +33,7 @@
                             <tr>
                                 <th scope="row">{{ $movie->id }}</th>
                                 <td>{{ $movie->title }}</td>
-                                <td>{{ $movie->available }}</td>
+                                <td>{{ $movie->available ? Disponible : No disponible }}</td>
                                 <td>{{ $movie->released_at }}</td>
                                 <td>{{ $movie->bought_at }}</td>
                                 <td>{{ $movie->updated_at }}</td>
