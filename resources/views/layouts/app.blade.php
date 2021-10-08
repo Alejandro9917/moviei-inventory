@@ -26,8 +26,11 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <a class="navbar-brand" href="{{ url('/category') }}">
+                <a class="navbar-brand" href="{{ url('/category/create') }}">
                     Categorias
+                </a>
+                <a class="navbar-brand" href="{{ url('/movie/create') }}">
+                    Películas
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

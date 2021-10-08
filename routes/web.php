@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MovieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //Rutas para el controlador de categorias
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/category', [CategoryController::class, 'index'])->name('category');
+    Route::get('/category/create', [CategoryController::class, 'create'])->name('category');
     Route::post('/category', [CategoryController::class, 'store'])->name('category_new');
+});
+
+//Rutas para el controlador de películas
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/movie/create', [MovieController::class, 'create'])->name('movie');
+    Route::post('/movie', [MovieController::class, 'store'])->name('movie_new');
 });
