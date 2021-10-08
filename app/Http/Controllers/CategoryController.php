@@ -36,7 +36,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $data = $request->validate([
+                'category' => 'required|alpha_num|max:250',
+            ]);
+
+            $category = Category::create($data);
+            return view('admin.category', ['categories' =>  Category::get()]);
+        }
+
+        catch(Exception $ex){
+            $error = array(['error' => 'No se ha podido completar: '.$ex]);
+            return view('admin.category', ['categories' =>  Category::get(), 'error' => $error]);
+        }
     }
 
     /**

@@ -24,4 +24,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Rutas para el controlador de categorias
-Route::middleware(['auth', 'verified'])->get('/category', [CategoryController::class, 'index'])->name('category');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/category', [CategoryController::class, 'index'])->name('category');
+    Route::post('/category', [CategoryController::class, 'store'])->name('category_new');
+});
