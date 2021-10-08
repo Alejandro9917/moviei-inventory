@@ -21,7 +21,7 @@ class M3Rentals extends Migration
                                       //3 si la pelicula no ha sido devuelta después de la fecha, 4 si la película fue devuelta después
             $table->date('rented_at');
             $table->date('secure_date');
-            $table->date('ticket_date');
+            $table->date('returned_at');
             $table->timestamps();
 
             $table->foreign('movie_id')->references('id')->on('movies')->onDelete('cascade');

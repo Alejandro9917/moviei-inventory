@@ -19,7 +19,7 @@ class M2Movies extends Migration
             $table->string('title');
             $table->boolean('available');
             $table->date('released_at');
-            $table->date('bought');
+            $table->date('bought_at');
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
