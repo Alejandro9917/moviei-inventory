@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
 use App\Models\Movie;
 
 class MovieController extends Controller
@@ -25,8 +26,9 @@ class MovieController extends Controller
      */
     public function create()
     {
-        $movies = Movie::all();
-        return view('admin.movie', ['movies' => $movies]);
+        $movies = Movie::orderBy('title')->get();
+        $categories = Category::get();
+        return view('admin.movie', ['movies' => $movies, 'categories' => $categories]);
     }
 
     /**
@@ -37,7 +39,24 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $data = $request->validate([
+                'category_id' => 'required',
+                'title' => 'required',
+                'released_at' => 'required',
+                'bought_at' => 'required',
+            ]);
+
+            $movie = Movie::create($data);
+            return redirect('/movie/create');
+        }
+
+        catch(Exception $ex){
+            $error = array(['error' => 'No se ha podido completar: '.$ex]);
+            $movies = Movie::all();
+            $categories = Category::get();
+            return view('admin.movie', ['movies' => Movie::all(), 'categories' => Category::get(), 'error' => $error]);
+        }
     }
 
     /**
@@ -48,7 +67,7 @@ class MovieController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -59,7 +78,9 @@ class MovieController extends Controller
      */
     public function edit($id)
     {
-        //
+        $movie = Movie::where(['id' => $id])->first();
+        $categories = Category::get();
+        return view('admin.movie-update', ['movie' => $movie, 'categories' => $categories]);
     }
 
     /**
@@ -71,7 +92,24 @@ class MovieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try{
+            $data = $request->validate([
+                'category_id' => 'required',
+                'title' => 'required',
+                'released_at' => 'required',
+                'bought_at' => 'required',
+            ]);
+
+            $movie = Movie::where(['id' => $id])->update($data);
+            return redirect('/movie/create');
+        }
+
+        catch(Exception $ex){
+            $error = array(['error' => 'No se ha podido completar: '.$ex]);
+            $movies = Movie::all();
+            $categories = Category::get();
+            return view('admin.movie', ['movies' => Movie::all(), 'categories' => Category::get(), 'error' => $error]);
+        }
     }
 
     /**

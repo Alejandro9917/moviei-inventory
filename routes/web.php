@@ -17,7 +17,7 @@ use App\Http\Controllers\MovieController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/home');
 });
 
 Auth::routes();
@@ -34,4 +34,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/movie/create', [MovieController::class, 'create'])->name('movie');
     Route::post('/movie', [MovieController::class, 'store'])->name('movie_new');
+    Route::get('/movie/{id}/edit', [MovieController::class, 'edit'])->name('movie.edit');
+    Route::get('/movie/{id}', [MovieController::class, 'update'])->name('movie.update');
 });

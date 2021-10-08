@@ -17,7 +17,7 @@ class M2Movies extends Migration
             $table->id();
             $table->unsignedBigInteger('category_id');
             $table->string('title');
-            $table->boolean('available');
+            $table->boolean('available')->default(1);
             $table->date('released_at');
             $table->date('bought_at');
             $table->timestamps();

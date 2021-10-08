@@ -43,7 +43,7 @@ class CategoryController extends Controller
             ]);
 
             $category = Category::create($data);
-            return view('admin.category', ['categories' =>  Category::get()]);
+            return redirect('/category/create');
         }
 
         catch(Exception $ex){
