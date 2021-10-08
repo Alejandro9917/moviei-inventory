@@ -15,11 +15,11 @@ class Rental extends Model
 
     public function client()
     {
-        return $this->belongsTo(Client::class, 'id', 'client_id');
+        return $this->belongsTo(Client::class, 'client_id', 'id');
     }
 
     public function movie()
     {
-        return $this->belongsTo(Movie::class, 'id', 'movie_id');
+        return $this->belongsTo(Movie::class, 'movie_id', 'id');
     }
 }

@@ -36,10 +36,10 @@
                                 <td>{{ $movie->available }}</td>
                                 <td>{{ $movie->released_at }}</td>
                                 <td>{{ $movie->bought_at }}</td>
-                                @if(Auth::user()->role == "Admin")
                                 <td>{{ $movie->updated_at }}</td>
-                                @endif
+                                @if(Auth::user()->role == "Admin")
                                 <td><a href="{{ route('movie.edit', ['id' => $movie->id]) }}">Editar</td>
+                                @endif
                             </tr>
                             @endforeach
                         </tbody>

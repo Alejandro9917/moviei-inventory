@@ -15,8 +15,8 @@ class MovieController extends Controller
      */
     public function index()
     {
-        /*$movies = Movie::all();
-        return view('admin.movie', ['movies' => $movies]);*/
+        $movies = Movie::all();
+        return view('client.movie', ['movies' => $movies]);
     }
 
     /**

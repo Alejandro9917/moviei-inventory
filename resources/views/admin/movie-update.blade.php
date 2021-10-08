@@ -34,7 +34,7 @@
                                 <div class="mb-3 col-md-6 form-check">
                                     <label for="available" class="form-label">Estado</label>
                                     <input type="text" class="form-control" id="available" 
-                                    @if($movie->available === 1) value="Disponible" @else value="No disponible" @endif
+                                    value="{{ $movie->available ? 'Disponible' : 'No disponible' }}"
                                     name="available" id="available" readonly>
                                 </div>
                             </div>    

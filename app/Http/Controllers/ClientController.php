@@ -6,6 +6,16 @@ use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
+    public function viewLogin()
+    {
+        return view('auth.login-client');
+    }
+
+    public function login($request)
+    {
+        
+    }
+
     /**
      * Display a listing of the resource.
      *
